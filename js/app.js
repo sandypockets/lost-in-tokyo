@@ -62,6 +62,7 @@ class Attraction extends React.Component {
       <div
       className={`ph4 ph5-ns ph0-l mb4 mb5-ns w-100 overflow-hidden pointer attraction ${className}`}
       onClick={this.toggleInfo}
+      onMouseLeave={this.toggleInfo}
     >
       <div className="relative">
         <div

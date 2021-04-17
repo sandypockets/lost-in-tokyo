@@ -40,6 +40,14 @@ const Nav = () => (
   </nav>
 )
 
+const Attraction = ({title, description, image, className}) => (
+  <div className={className}>
+    <h1>{title}</h1>
+    <p>{description}</p>
+    <img src={`../images/${image}`}/>
+  </div>
+)
+
 // Main app component
 const App = () => (
   <div>
@@ -48,7 +56,9 @@ const App = () => (
       <Nav />
       <Intro />
     </div>
-    <div className="flex flex-wrap container">{/* our attractions list component */}</div>
+    <div className="flex flex-wrap container">
+      {attractions.map(attraction => <Attraction {...attraction} />)}
+      </div>
   </div>
 )
 

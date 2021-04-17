@@ -1,12 +1,11 @@
 
-// Highlight words
 const Highlight = ({ color, children }) => (
   <span className={`relative highlight highlight-${color}`}>
     <span className={`relative z-2`}>{children}</span>
   </span>
 )
 
-// Intro text
+
 const Intro = () => (
   <div className="m-auto-ns f4 f3-m f2-l tc w-80-l normal">
     <div className="mb3 mb4-ns">
@@ -19,6 +18,7 @@ const Intro = () => (
   </div>
 )
 
+
 const NavItem = ({ className, href, children, logo }) => (
   <li className={`mh2-ns f6 f4-1 tc ${className}`}>
     <a className='white no-underline' href={href}>
@@ -27,6 +27,7 @@ const NavItem = ({ className, href, children, logo }) => (
   </li>
 
 )
+
 
 const Nav = () => (
   <nav className='pt3 pt4-ns mb3 mb0-ns'>
@@ -38,14 +39,21 @@ const Nav = () => (
   </nav>
 )
 
+
 class Attraction extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       showInfo: false
     }
+    this.toggleInfo = this.toggleInfo.bind(this);
   }
 
+  toggleInfo() {
+    this.setState((prev) => {
+      return {showInfo: !prev.showInfo}
+    })
+  }
 
   render() {
     const {title, description, className, image} = this.props;
@@ -53,7 +61,7 @@ class Attraction extends React.Component {
     return (
       <div
       className={`ph4 ph5-ns ph0-l mb4 mb5-ns w-100 overflow-hidden pointer attraction ${className}`}
-      onClick={() => this.setState({showInfo: true})}
+      onClick={this.toggleInfo}
     >
       <div className="relative">
         <div
@@ -72,7 +80,7 @@ class Attraction extends React.Component {
   }
 }
 
-// Main app component
+
 const App = () => (
   <div>
     <div className="min-vh-100 ph4 flex flex-column">
@@ -84,9 +92,6 @@ const App = () => (
       </div>
   </div>
 )
-
-
-
 
 
 ReactDOM.render(<App />, document.getElementById('root'));
